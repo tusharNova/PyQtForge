@@ -12,24 +12,25 @@ def generate_project(name: str):
         print(f"⚠️ Folder '{name}' already exists.")
         return
 
-    # Create the new project directory
-    target_dir.mkdir(parents=True)
-    # shutil.copytree(template_dir, target_dir)
-
-    # Set up Jinja
     env = Environment(loader=FileSystemLoader(template_dir))
 
-    # Render template files
-    for template_file in template_dir.glob("**/*.j2"):
-        relative_path = template_file.relative_to(template_dir)
-        output_path = target_dir / relative_path.with_suffix('')  # Remove .j2
+    for item in template_dir.rglob("*"):
+        relative_path = item.relative_to(template_dir)
+        target_path = target_dir / relative_path
 
-        output_path.parent.mkdir(parents=True, exist_ok=True)
+        if item.is_dir():
+            (target_dir / relative_path).mkdir(parents=True, exist_ok=True)
+            # target_path.mkdir(parents=True, exist_ok=True)
+        elif item.suffix == ".j2":
+            output_path = target_path.with_suffix("")  # Remove .j2
+            template = env.get_template(str(relative_path))
+            rendered = template.render(project_name=name)
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(output_path, "w") as f:
+                f.write(rendered)
+        else:
 
-        template = env.get_template(str(relative_path))
-        rendered = template.render(project_name=name)
+            target_path.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(item, target_path)
 
-        with open(output_path, 'w') as f:
-            f.write(rendered)
-
-    print(f"✅ Created PyQt project: {target_dir}")
+    print(f"✅ Project '{name}' created with UI and resources.")
