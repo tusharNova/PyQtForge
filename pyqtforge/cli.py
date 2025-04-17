@@ -1,20 +1,21 @@
 import typer
 from generator import generate_project
 from runner import run_project
-
+from envmanager import create_venv
 app = typer.Typer()
 
-#
-#
-# @app.command()
-# def create(name: str):
-#     """start project"""
-#     typer.echo(f"🔧 Creating new PyQt app: {name}")
+
 
 @app.command("createproject")
 def create_project(name: str):
     """Create a new PyQt project with the given name."""
     generate_project(name)
+    create = typer.confirm("🧪 Do you want to create a virtual environment in this project?", default=False)
+
+    if create:
+        create_venv(name)
+    else:
+        print("✅ Project created using system Python.")
 
 @app.command("runproject")
 def run_project_command(name: str):

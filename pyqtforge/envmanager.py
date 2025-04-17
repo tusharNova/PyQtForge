@@ -2,7 +2,7 @@ import subprocess
 from pathlib import Path
 import sys
 
-def create_vene(project_name : str):
+def create_venv(project_name : str):
     venv_path = Path.cwd() / project_name / ".venv"
 
     if venv_path.exists():
