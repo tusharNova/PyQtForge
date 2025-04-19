@@ -14,6 +14,7 @@ def run_project(name: str, use_venv: bool = False, debug: bool = False):
     if use_venv:
         venv_path = project_dir / ".venv"
         python_exec = venv_path / "bin" / "python" if os.name != 'nt' else venv_path / "Scripts" / "python.exe"
+
         if not python_exec.exists():
             print("❌ No virtual environment found in the project.")
             return
