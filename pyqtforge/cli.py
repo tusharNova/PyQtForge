@@ -1,7 +1,7 @@
 import typer
 from generator import generate_project
 from runner import run_project
-from envmanager import create_venv
+from envmanager import create_venv , install_packages
 app = typer.Typer()
 
 
@@ -10,12 +10,24 @@ app = typer.Typer()
 def create_project(name: str):
     """Create a new PyQt project with the given name."""
     generate_project(name)
-    create = typer.confirm("🧪 Do you want to create a virtual environment in this project?", default=False)
 
-    if create:
-        create_venv(name)
-    else:
-        print("✅ Project created using system Python.")
+    # Step 1: Venv
+    use_venv = typer.confirm("🧪 Create a virtual environment in this project?", default=False)
+    venv_path = None
+    if use_venv:
+        venv_path = create_venv(name)
+
+    # Step 2: Install packages
+    if typer.confirm("📦 Install recommended packages (PyQt5, tools)?", default=True):
+        packages = ["pyqt5", "pyqt5-tools"]
+        install_packages(packages, venv_path)
+
+    # Step 3: PyInstaller
+    if typer.confirm("📦 Set up PyInstaller for building executables?", default=False):
+        install_packages(["pyinstaller"], venv_path)
+
+
+
 
 @app.command("runproject")
 def run_project_command(name: str):
