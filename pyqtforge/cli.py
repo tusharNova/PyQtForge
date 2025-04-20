@@ -54,10 +54,29 @@ def run_project_command(
 
 
 @app.command()
-def createui(
-    ui_name: str = typer.Argument(..., help="The name of the UI file (without .ui)"),
-):
-  pass
+def createui(name: str = typer.Argument(..., help="Name of the UI file (without .ui extension)")):
+    """
+    Launch Qt Designer and create a new .ui file inside the 'ui/' folder.
+    """
+    ui_folder = Path("ui")
+    ui_folder.mkdir(parents=True , exist_ok=True)
+
+    ui_file_path = ui_folder / f"{name}.ui"
+
+    if not ui_file_path.exists():
+        ui_file_path.touch()
+
+    try:
+        subprocess.run(["pyqt5-tools" , "designer", str(ui_file_path)] ,check=True)
+        typer.echo(f"✅ Qt Designer launched for: {ui_file_path}")
+    except FileNotFoundError:
+        typer.echo("❌ 'pyqt5-tools' is not installed or 'designer' not found in PATH.")
+    except subprocess.CalledProcessError:
+        typer.echo("❌ Failed to launch Qt Designer.")
+
+
+
+
 
 
 if __name__ == "__main__":
