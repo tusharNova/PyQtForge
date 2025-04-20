@@ -47,6 +47,12 @@ pip install -r requirements.txt
 
 ```
 
+#### Convert ui to py Command:
+```bash
+ python pyqtforge/cli.py ui3py
+
+```
+
 # 📁 Project Structure Example
 ```css
 myapp/
