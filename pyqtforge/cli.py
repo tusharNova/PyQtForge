@@ -1,6 +1,5 @@
-
 from typing import Optional
-
+import click
 import typer
 from generator import generate_project
 from envmanager import create_venv, install_packages
@@ -11,6 +10,16 @@ import subprocess
 from pathlib import Path
 
 app = typer.Typer()
+
+
+@app.callback()
+@click.version_option(version="0.1.0")
+def main_callback():
+    """
+    PyQtForge — CLI for managing PyQt project templates.
+    """
+    pass
+
 
 @app.command("createproject")
 def create_project(
@@ -52,7 +61,6 @@ def run_project_command(
     run_project(name, use_venv=venv, debug=debug)
 
 
-
 @app.command()
 def createui(
     name: str = typer.Argument(..., help="Name for the UI file (used for suggestion only)")
@@ -72,5 +80,60 @@ def createui(
     except subprocess.CalledProcessError:
         typer.echo("❌ Failed to launch Qt Designer.")
 
-if __name__ == "__main__":
+
+@app.command()
+def ui2py(
+    ui_file: str = typer.Argument(None, help="Path to the .ui file to convert (or use --all)"),
+    all: bool = typer.Option(False, "--all", help="Convert all .ui files in the 'ui/' directory."),
+):
+    """
+    Convert a .ui file into a Python .py file using pyuic5.
+    Use --all to convert all .ui files in the ui/ folder.
+    """
+    from pathlib import Path
+    import subprocess
+
+    ui_dir = Path("ui")
+    views_dir = Path("views")
+    views_dir.mkdir(exist_ok=True)
+
+    files_to_convert = []
+
+    if all:
+        if not ui_dir.exists():
+            typer.echo("❌ 'ui/' directory not found.")
+            raise typer.Exit()
+        files_to_convert = list(ui_dir.glob("*.ui"))
+        if not files_to_convert:
+            typer.echo("⚠️ No .ui files found in 'ui/' directory.")
+            raise typer.Exit()
+    else:
+        if not ui_file:
+            typer.echo("❌ Please provide a .ui file or use --all.")
+            raise typer.Exit()
+        ui_path = Path(ui_file)
+        if not ui_path.exists():
+            typer.echo(f"❌ UI file '{ui_file}' does not exist.")
+            raise typer.Exit()
+        files_to_convert = [ui_path]
+
+    for file in files_to_convert:
+        output_file = views_dir / f"{file.stem}.py"
+        try:
+            subprocess.run([
+                "pyuic5", str(file),
+                "-o", str(output_file)
+            ], check=True)
+            typer.echo(f"✅ Converted {file} -> {output_file}")
+        except FileNotFoundError:
+            typer.echo("❌ 'pyuic5' not found. Make sure PyQt5 is installed.")
+        except subprocess.CalledProcessError:
+            typer.echo(f"❌ Failed to convert: {file}")
+
+# ✅ This is your main entry point for scripts and setup.py console entry
+def main():
     app()
+
+if __name__ == "__main__":
+    main()
+
