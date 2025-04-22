@@ -4,7 +4,9 @@ from pathlib import Path
 import os
 
 def run_project(name: str, use_venv: bool = False, debug: bool = False):
+    # print(Path.cwd())
     project_dir = Path.cwd() / name
+    # print(project_dir)
     main_file = project_dir / "main.py"
 
     if not main_file.exists():
