@@ -1,0 +1,4 @@
+typer
+click
+pyqt5
+pyqt5-tools

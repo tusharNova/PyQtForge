@@ -1,9 +1,9 @@
 from typing import Optional
 import click
 import typer
-from generator import generate_project
-from envmanager import create_venv, install_packages
-from runner import run_project
+from pyqtforge.generator import generate_project
+from pyqtforge.envmanager import create_venv, install_packages
+from pyqtforge.runner import run_project
 import os
 from pathlib import Path
 import subprocess
@@ -27,8 +27,8 @@ def create_project(
     no_prompt: bool = typer.Option(False, "--no-prompt", help="Run setup without any questions"),
 ):
     """Create a new PyQt project with the given name."""
-    from envmanager import create_venv, install_packages
-    from generator import generate_project
+    from pyqtforge.envmanager import create_venv, install_packages
+    from pyqtforge.generator import generate_project
 
     generate_project(name)
 
@@ -37,7 +37,7 @@ def create_project(
         print("⚙️ Running in no-prompt mode.")
         venv_path = create_venv(name)
         install_packages(["pyqt5", "pyqt5-tools"], venv_path)
-        install_packages(["pyinstaller"], venv_path)
+        # install_packages(["pyinstaller"], venv_path)
     else:
         use_venv = typer.confirm("🧪 Create a virtual environment in this project?", default=False)
         if use_venv:
