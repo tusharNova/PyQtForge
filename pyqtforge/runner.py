@@ -4,12 +4,20 @@ from pathlib import Path
 import os
 
 def run_project(name: str, use_venv: bool = False, debug: bool = False):
-    print(Path.cwd())
-    print(name)
+    # print(Path.cwd())
+    # print(name)
 
     project_dir = Path.cwd() / name
     main_file = project_dir / "main.py"
 
+    cwd = Path.cwd()
+    project_dir = cwd/ name if not (cwd / "main.py").exists() else cwd
+    main_file = project_dir / "main.py"
+
+    # if not main_file.exists():
+    #     print(f"❌ Could not find 'main.py' in {project_dir}")
+    #     return
+    
     if not main_file.exists():
         print(f"❌ Could not find 'main.py' in {project_dir}")
         return
@@ -25,6 +33,7 @@ def run_project(name: str, use_venv: bool = False, debug: bool = False):
         python_exec = "python"
 
     cmd = [str(python_exec), str(main_file)]
+    # print(cmd)
 
     if debug:
         print(f"[DEBUG] Running command: {' '.join(cmd)}")

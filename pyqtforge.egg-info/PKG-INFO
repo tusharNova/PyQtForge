@@ -1,4 +1,4 @@
-Metadata-Version: 2.4
+Metadata-Version: 2.2
 Name: pyqtforge
 Version: 0.1.2
 Summary: A CLI tool to scaffold and manage PyQt projects easily.
