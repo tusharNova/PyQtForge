@@ -54,14 +54,6 @@ def create_project(
     print("🎉 Project setup complete!")
 
 
-# @app.command("runproject")
-# def run_project_command(
-#     name: str,
-#     venv: bool = typer.Option(False, help="Use virtual environment in the project folder."),
-#     debug: bool = typer.Option(False, help="Enable debug mode (prints commands).")
-# ):
-#     """Run a PyQt project by its folder name."""
-#     run_project(name, use_venv=venv, debug=debug)
 
 @app.command("runproject")
 def run_project_command(
@@ -101,6 +93,7 @@ def ui2py(
 ):
     """
     Convert a .ui file into a Python .py file using pyuic5.
+    Use ui file to covert or
     Use --all to convert all .ui files in the ui/ folder.
     """
     from pathlib import Path

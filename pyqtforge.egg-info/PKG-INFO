@@ -1,6 +1,6 @@
 Metadata-Version: 2.2
 Name: pyqtforge
-Version: 0.1.2
+Version: 0.1.3
 Summary: A CLI tool to scaffold and manage PyQt projects easily.
 Author: Tushar Mankar
 Classifier: Programming Language :: Python :: 3
