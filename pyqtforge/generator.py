@@ -35,6 +35,3 @@ def generate_project(name: str):
             shutil.copy2(item, target_path)
 
     print(f"✅ Project '{name}' created with UI and resources.")
-
-
-
