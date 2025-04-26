@@ -1,11 +1,7 @@
 from typing import Optional
 import click
 import typer
-from pyqtforge.generator import generate_project
-from pyqtforge.envmanager import create_venv, install_packages
 from pyqtforge.runner import run_project
-import os
-from pathlib import Path
 import subprocess
 from pathlib import Path
 
@@ -16,7 +12,13 @@ app = typer.Typer()
 @click.version_option(version="0.1.0")
 def main_callback():
     """
-    PyQtForge — CLI for managing PyQt project templates.
+    🚀 PyQtForge — A CLI tool to manage and build PyQt5 apps easily.
+
+    Commands:
+    - createproject <name> : Create a new project
+    - runproject            : Run the app from current folder
+    - createui <name>       : Open Designer to create UI
+    - ui2py <name>/(--all)         : Convert .ui files to Python
     """
     pass
 
@@ -51,14 +53,25 @@ def create_project(
 
     print("🎉 Project setup complete!")
 
+
+# @app.command("runproject")
+# def run_project_command(
+#     name: str,
+#     venv: bool = typer.Option(False, help="Use virtual environment in the project folder."),
+#     debug: bool = typer.Option(False, help="Enable debug mode (prints commands).")
+# ):
+#     """Run a PyQt project by its folder name."""
+#     run_project(name, use_venv=venv, debug=debug)
+
 @app.command("runproject")
 def run_project_command(
-    name: str,
     venv: bool = typer.Option(False, help="Use virtual environment in the project folder."),
     debug: bool = typer.Option(False, help="Enable debug mode (prints commands).")
 ):
-    """Run a PyQt project by its folder name."""
-    run_project(name, use_venv=venv, debug=debug)
+    """Run a PyQt project from the current folder."""
+    run_project(use_venv=venv, debug=debug)
+
+
 
 
 @app.command()
@@ -129,6 +142,9 @@ def ui2py(
             typer.echo("❌ 'pyuic5' not found. Make sure PyQt5 is installed.")
         except subprocess.CalledProcessError:
             typer.echo(f"❌ Failed to convert: {file}")
+
+
+
 
 # ✅ This is your main entry point for scripts and setup.py console entry
 def main():
