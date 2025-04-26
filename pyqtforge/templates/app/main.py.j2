@@ -1,17 +1,18 @@
 # main.py.j2
 import sys
-from PyQt5.QtWidgets import QApplication, QLabel, QWidget, QVBoxLayout
+from PyQt5.QtWidgets import QApplication, QMainWindow
 
-app = QApplication(sys.argv)
+from views.mainWindow import Ui_MainWindow
 
-window = QWidget()
-window.setWindowTitle("Hello PyQt")
-layout = QVBoxLayout()
-label1 = QLabel("Hello from {{project_name}}!")
-layout.addWidget(label1)
+class clsMainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+        self.ui.label.setText("Hello from {{project_name}}!")
 
-window.setLayout(layout)
-window.resize(300, 200)
-window.show()
-
-sys.exit(app.exec_())
+if __name__ == '__main__':
+    app = QApplication([])
+    f = clsMainWindow()
+    f.show()
+    sys.exit(app.exec_())
