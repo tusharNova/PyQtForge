@@ -21,6 +21,7 @@ def generate_project(name: str):
         if item.is_dir():
             (target_dir / relative_path).mkdir(parents=True, exist_ok=True)
             # target_path.mkdir(parents=True, exist_ok=True)
+
         elif item.suffix == ".j2":
             output_path = target_path.with_suffix("")  # Remove .j2
             template = env.get_template(str(relative_path))
@@ -34,3 +35,6 @@ def generate_project(name: str):
             shutil.copy2(item, target_path)
 
     print(f"✅ Project '{name}' created with UI and resources.")
+
+
+
