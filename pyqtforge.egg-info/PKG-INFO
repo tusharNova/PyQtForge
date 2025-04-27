@@ -1,9 +1,11 @@
-Metadata-Version: 2.2
+Metadata-Version: 2.4
 Name: pyqtforge
-Version: 0.1.3
+Version: 0.1.4
 Summary: A CLI tool to scaffold and manage PyQt projects easily.
+Home-page: https://github.com/tusharNova/PyQtForge
 Author: Tushar Mankar
 Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
 Requires-Python: >=3.7
 Description-Content-Type: text/markdown
@@ -16,98 +18,146 @@ Dynamic: author
 Dynamic: classifier
 Dynamic: description
 Dynamic: description-content-type
+Dynamic: home-page
 Dynamic: requires-dist
 Dynamic: requires-python
 Dynamic: summary
 
-# PyQtForge 🛠️
+# 📦 PyQtForge
 
-**PyQtForge** is a lightweight framework and CLI tool that helps you quickly scaffold, manage, and run PyQt5 desktop applications — with ease and flexibility.
-
----
-
-## ✨ Features
-
-- 📁 Create new PyQt5 project structure instantly
-- 🧠 Template rendering with Jinja2
-- 📦 Includes UI files, resource folders, and ready-to-run `main.py`
-- ⚙️ Run projects with a single command (`runproject`)
-- 🐍 Choose between global Python or virtual environments
-- 🧪 Debug mode for deeper visibility into commands
+> **PyQtForge** is a developer tool that helps you quickly create, manage, and run PyQt5 applications with simple CLI commands.  
+> Ideal for fast desktop app development using **Python** and **Qt**.
 
 ---
 
-## 🚀 Installation
+## 🚀 Features
+
+- Scaffold new PyQt5 projects in seconds
+- Auto-create and manage virtual environments
+- Launch Qt Designer easily
+- Convert `.ui` files to `.py` automatically
+- Run projects with or without virtual environments
+- Simple commands, fast workflows
+
+---
+
+## 📥 Installation
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/tusharNova/pyqtforge.git
+    cd pyqtforge
+    ```
+
+2. Install in editable mode:
+    ```bash
+    pip install -e .
+    ```
+
+> **Note:** Make sure you have Python 3.8 or higher installed.
+
+---
+
+## 🛠 Requirements
+
+- Python 3.8+
+- pyqt5
+- pyqt5-tools
+- typer
+- click
+
+Install manually if needed:
 
 ```bash
-git clone https://github.com/yourusername/pyqtforge.git
-cd pyqtforge
-pip install -r requirements.txt
+pip install pyqt5 pyqt5-tools typer click
 ```
 
-# 🧪 Commands
+## 🧰 Commands Overview
 
-## 📦 Create a New Project
-```bash
- python pyqtforge/cli.py createproject myapp
-```
+| Command                                | Description |
+|----------------------------------------| ------------- |
+| pyqtforge createproject <project_name> | Create a new PyQt project scaffold |
+| pyqtforge runproject <project_name>    | Run the project |
+| pyqtforge createui <ui_file_name>      | Launch Qt Designer to create .ui files |
+| pyqtforge ui2py <ui_file_path>         | Convert a single .ui file to .py |
+| pyqtforge ui2py --all                  | Convert all .ui files in ui/ directory |
 
-## 🚀 Run a Project
-```bash
- python pyqtforge/cli.py runproject myapp
-```
 
-### Options:
-```bash
- --venv       Use .venv inside the project (if exists)
- --debug      Print command details
-```
+## 🏗 Project Structure
 
-#### Example:
-```bash
- python pyqtforge/cli.py runproject myapp --venv true --debug
-
-```
-
-#### Convert ui to py Command:
-```bash
- python pyqtforge/cli.py ui3py
-
-```
-
-# 📁 Project Structure Example
-```css
-myapp/
-├── main.py
+```text
+your_project/
 ├── ui/
-│   └── main_window.ui
-└── resources/
-    └── .keep
+│   └── (your .ui design files)
+├── views/
+│   └── (converted .py files from .ui)
+├── main.py
+├── .venv/ (optional)
+└── resources/ (optional static files/images)
 ```
 
-# 📌 Requirements
-- Python 3.7+
-- PyQt5
-- Typer
-- Jinja2
-
-#### Install via:
+## ⚡ Quickstart Example
+- 1 Create a new project:
 ```bash
- pip install -r requirements.txt
+   pyqtforge createproject myapp
+   cd myapp
+```
+- 2 Launch Qt Designer:
+```bash
+   pyqtforge createui mywindow
+```
+- 3 After designing, convert .ui to .py:
+```bash
+   pyqtforge ui2py ui/mywindow.ui
+```
+- 4 Edit your main.py to use the generated Python UI file:
+```bash
+   from PyQt5 import QtWidgets
+   from views.mywindow import Ui_MainWindow
+   
+   class clsMainWindow(QtWidgets.QMainWindow):
+       def __init__(self):
+           super(clsMainWindow , self).__init__()
+           self.ui = Ui_MainWindow()
+           self.ui.setupUi(self)
+   
+   app = QtWidgets.QApplication([])
+   window = MainWindow()
+   window.show()
+   app.exec_()
+```
+- 5 Run your project:
+```bash
+   pyqtforge runproject 
 ```
 
-# 📄 License
-MIT License — feel free to use, improve, and share.
+## 🤝 Contribution
+We welcome contributions to PyQtForge!
+- 1 Fork this repository
+- 2 Create a feature branch (git checkout -b feature/yourfeature)
+- 3 Commit your changes (git commit -m 'Add new feature')
+- 4 Push to your branch (git push origin feature/yourfeature)
+- 5 Create a Pull Request
 
-# ❤️ Contribute
 
-This project is just getting started! PRs, ideas, and issues are welcome 🙌
-Let’s make PyQt development smoother for everyone.
+#### 💬 Feel free to suggest improvements, report issues, and discuss ideas in Issues tab!
 
+## 📄 License
+##### This project is licensed under the MIT License — free to use, modify, and distribute.
+
+
+#### 🌟 Star the repository if you find it helpful!
+
+## 🔥 Let's build faster, better PyQt apps together!
 ```yaml
 
 ---
 
-Let me know if you want to add author info, link a logo/icon, or mention future roadmap!
+✅ **This is the complete and clean `README.md`!**
 
+---
+
+Would you also like me to generate a **`CONTRIBUTING.md`** file too (to guide contributors)? It would make your project even more professional! 🚀  
+Want it? 🌟  (Say: "yes")
 ```
+
