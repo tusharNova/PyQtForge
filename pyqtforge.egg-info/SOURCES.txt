@@ -1,3 +1,4 @@
+LICENSE
 README.md
 setup.py
 pyqtforge/__init__.py
