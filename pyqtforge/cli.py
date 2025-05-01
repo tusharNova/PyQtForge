@@ -137,6 +137,18 @@ def ui2py(
             typer.echo(f"❌ Failed to convert: {file}")
 
 
+@app.command("mkctrl" , help="Create a controller file (Cls<FileName>.py) in the controllers folder.")
+def controller(
+    name: str = typer.Argument(..., help="Base name of the controller (e.g., 'mainwindow')"),
+):
+    """
+       Create a controller file named Cls<FileName>.py inside the 'controllers' folder.
+       The class name will be 'Cls<FileName>' (CamelCase).
+    """
+    from pyqtforge.controllerGen import create_controller_file
+
+    create_controller_file(name)
+
 
 
 # ✅ This is your main entry point for scripts and setup.py console entry
