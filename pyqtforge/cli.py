@@ -138,7 +138,7 @@ def ui2py(
 
 
 @app.command("mkctrl" , help="Create a controller file (Cls<FileName>.py) in the controllers folder.")
-def controller(
+def controller_gen_file(
     name: str = typer.Argument(..., help="Base name of the controller (e.g., 'mainwindow')"),
 ):
     """
