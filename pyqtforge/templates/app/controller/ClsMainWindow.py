@@ -7,4 +7,4 @@ class ClsMainWindow(QMainWindow):
         super(ClsMainWindow , self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.ui.label.setText("Hello from {{project_name}}!")
+        self.ui.label.setText("Hello World")
