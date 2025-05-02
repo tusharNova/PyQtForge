@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: pyqtforge
-Version: 0.1.5
+Version: 0.1.6
 Summary: A CLI tool to scaffold and manage PyQt projects easily.
 Home-page: https://github.com/tusharNova/PyQtForge
 Author: Tushar Mankar

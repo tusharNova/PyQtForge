@@ -3,6 +3,7 @@ README.md
 setup.py
 pyqtforge/__init__.py
 pyqtforge/cli.py
+pyqtforge/controllerGen.py
 pyqtforge/envmanager.py
 pyqtforge/generator.py
 pyqtforge/runner.py
@@ -14,3 +15,4 @@ pyqtforge.egg-info/requires.txt
 pyqtforge.egg-info/top_level.txt
 pyqtforge/templates/app/views/mainWindow.py
 tests/test_cli.py
+tests/test_main.py

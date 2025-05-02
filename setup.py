@@ -3,7 +3,7 @@ from setuptools import setup , find_packages
 
 setup(
     name = "pyqtforge",
-    version="0.1.5",
+    version="0.1.6",
     package = find_packages(),
     include_package_data=True,
     install_requires=[
