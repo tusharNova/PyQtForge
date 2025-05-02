@@ -1,17 +1,10 @@
 # main.py.j2
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from views.mainWindow import Ui_MainWindow
-
-class clsMainWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
-        self.ui.label.setText("Hello from {{project_name}}!")
+from controller.ClsMainWindow import ClsMainWindow
 
 if __name__ == '__main__':
     app = QApplication([])
-    f = clsMainWindow()
+    f = ClsMainWindow()
     f.show()
     sys.exit(app.exec_())
