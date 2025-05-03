@@ -18,9 +18,12 @@ def create_controller_file(name: str):
         print(f"⚠️ Controller '{fileName}' already exists.")
         return
 
-    controller_code = f'''class {className}:
+    controller_code = f'''
+    from PyQt5.QtWidgets import QMainWindow
+    class {className}:
     def __init__(self):
          print("c{className} controller initialized.")
+         super({className} , self).__init__()
     '''
 
     controller_path.write_text(controller_code)
