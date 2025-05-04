@@ -143,7 +143,7 @@ def make_controller(
 ):
     """
     Create a controller class based on an existing view.
-    """c
+    """
     from pyqtforge.controllergen import generate_controller
     generate_controller(name)
 
