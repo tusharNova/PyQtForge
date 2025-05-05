@@ -148,6 +148,29 @@ def make_controller(
     generate_controller(name)
 
 
+@app.command("initdb")
+def init_database():
+    """
+    Initialize the database by creating the default DB file.
+    """
+    from pyqtforge.db.config import DB_PATH
+    if DB_PATH.exists():
+        typer.echo(f"✅ Database already exists at: {DB_PATH}")
+    else:
+        DB_PATH.touch()
+        typer.echo(f"🎉 New database created at: {DB_PATH}")
+
+
+@app.command("mkmodel")
+def make_model(model_name: str = typer.Argument(..., help="Name of the model (e.g. user)")):
+    """
+    Create a new database model inside the 'models/' folder.
+    """
+    from pyqtforge.modelgen import generate_model
+    generate_model(model_name)
+
+
+
 # ✅ This is your main entry point for scripts and setup.py console entry
 def main():
     app()
