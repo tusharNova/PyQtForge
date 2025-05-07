@@ -1,3 +1,8 @@
 create a setup in command  :- py -m pip install -e . (open in edit mode)
 
 create the distribute of package :- py setup.py sdist
+
+plan for next move
+the db file and code are already exixts
+initdb in which - like xconnection with db of sqlite / postgras and more
+after that create a table in which with model name
