@@ -15,9 +15,14 @@ pyqtforge.egg-info/dependency_links.txt
 pyqtforge.egg-info/entry_points.txt
 pyqtforge.egg-info/requires.txt
 pyqtforge.egg-info/top_level.txt
+pyqtforge/db/__init__.py
 pyqtforge/db/config.py
 pyqtforge/db/orm.py
 pyqtforge/templates/app/controller/ClsMainWindow.py
+pyqtforge/templates/app/db/__init__.py
+pyqtforge/templates/app/db/config.py
+pyqtforge/templates/app/db/orm.py
 pyqtforge/templates/app/views/mainWindow.py
 tests/test_cli.py
 tests/test_main.py
+tests/test_model.py
