@@ -3,7 +3,6 @@ README.md
 setup.py
 pyqtforge/__init__.py
 pyqtforge/cli.py
-pyqtforge/controllerGen.py
 pyqtforge/controllergen.py
 pyqtforge/envmanager.py
 pyqtforge/generator.py

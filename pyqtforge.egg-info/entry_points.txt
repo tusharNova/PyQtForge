@@ -1,2 +1,3 @@
 [console_scripts]
 pyqtforge = pyqtforge.cli:main
+
