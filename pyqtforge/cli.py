@@ -9,7 +9,7 @@ app = typer.Typer()
 
 
 @app.callback()
-@click.version_option(version="0.1.0")
+@click.version_option(version="0.1.8")
 def main_callback():
     """
     🚀 PyQtForge — A CLI tool to manage and build PyQt5 apps easily.

@@ -15,7 +15,7 @@ setup(
     ],
     entry_points={
     "console_scripts": [
-        "pyqtforge=pyqtforge.cli:main"
+        "pyqtforge = pyqtforge.cli:main"
     ]
 },
     author = "Tushar Mankar",

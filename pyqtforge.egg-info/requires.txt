@@ -1,5 +1,5 @@
+typer
 click
+uv
 pyqt5
 pyqt5-tools
-typer
-uv

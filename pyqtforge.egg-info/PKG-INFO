@@ -4,152 +4,93 @@ Version: 0.1.8
 Summary: A CLI tool to scaffold and manage PyQt projects easily.
 Home-page: https://github.com/tusharNova/PyQtForge
 Author: Tushar Mankar
-License: UNKNOWN
-Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
 Requires-Python: >=3.7
 Description-Content-Type: text/markdown
 License-File: LICENSE
+Requires-Dist: typer
+Requires-Dist: click
+Requires-Dist: uv
+Requires-Dist: pyqt5
+Requires-Dist: pyqt5-tools
 
-# 📦 PyQtForge
 
-> **PyQtForge** is a developer tool that helps you quickly create, manage, and run PyQt5 applications with simple CLI commands.  
-> Ideal for fast desktop app development using **Python** and **Qt**.
+# PyQtForge 🔥
 
----
+PyQtForge is a lightweight and powerful CLI framework designed to accelerate PyQt5 desktop app development. It brings the structure of modern web frameworks like Django to the world of Python desktop applications.
 
-## 🚀 Features
-
-- Scaffold new PyQt5 projects in seconds
-- Auto-create and manage virtual environments
-- Launch Qt Designer easily
-- Convert `.ui` files to `.py` automatically
-- Run projects with or without virtual environments
-- Simple commands, fast workflows
+![PyQtForge Logo](images/log.png)
+![PyQtforge Flow](images/flow.png)
 
 ---
 
-## 📥 Installation
+## ✨ Key Features
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/tusharNova/pyqtforge.git
-    cd pyqtforge
-    ```
-
-2. Install in editable mode:
-    ```bash
-    pip install -e .
-    ```
-
-> **Note:** Make sure you have Python 3.8 or higher installed.
+- ⚡ Fast project scaffolding with `createproject`
+- 🧱 Structured MVC-like pattern using `views`, `controllers`, and `models`
+- 🎨 Integrates Qt Designer (`.ui`) with auto-conversion to Python
+- ⚙️ Controller generation with `mkctrl`
+- 🧩 ORM-friendly design with `initdb` and `models.py`
+- 📦 Virtualenv support and package installer
+- 📂 Clean and extensible file structure
+- 🚀 Ready for PyInstaller packaging
 
 ---
 
-## 🛠 Requirements
-
-- Python 3.8+
-- pyqt5
-- pyqt5-tools
-- typer
-- click
-
-Install manually if needed:
+## 📦 Installation
 
 ```bash
-pip install pyqt5 pyqt5-tools typer click
+pip install pyqtforge
+git clone https://github.com/tusharNova/pyqtforge
+cd pyqtforge
+pip install -e .
 ```
 
-## 🧰 Commands Overview
+## 🔧 CLI Usage
+```bash
+pyqtforge createproject MyApp         # Creates a new PyQt project
+cd MyApp
 
-| Command                                | Description |
-|----------------------------------------| ------------- |
-| pyqtforge createproject <project_name> | Create a new PyQt project scaffold |
-| pyqtforge runproject <project_name>    | Run the project |
-| pyqtforge createui <ui_file_name>      | Launch Qt Designer to create .ui files |
-| pyqtforge ui2py <ui_file_path>         | Convert a single .ui file to .py |
-| pyqtforge ui2py --all                  | Convert all .ui files in ui/ directory |
+pyqtforge createui MainWindow         # Launch Qt Designer
+pyqtforge ui2py --all                 # Convert all .ui to .py
 
+pyqtforge mkctrl MainWindow          # Create controller for MainWindow.ui
+pyqtforge initdb                     # Set up config/ and models/ for ORM
+pyqtforge runproject MyApp           # Run your project
+pyqtforge mkmodel user               # create user model
+```
 
-## 🏗 Project Structure
-
-```text
-your_project/
-├── ui/
-│   └── (your .ui design files)
-├── views/
-│   └── (converted .py files from .ui)
+## 🧠 Project Structure
+```bash
+MyApp/
+│
 ├── main.py
-├── .venv/ (optional)
-└── resources/ (optional static files/images)
+├── ui/              # Qt Designer .ui files
+├── views/           # Converted .py files from UI
+├── controllers/     # Controller classes (ClsMainWindow, etc.)
+├── models/          # ORM-style models
+├── config/          # DB connection settings
+├── .venv/           # Optional virtual environment
+└── ...
 ```
 
-## ⚡ Quickstart Example
-- 1 Create a new project:
-```bash
-   pyqtforge createproject myapp
-   cd myapp
-```
-- 2 Launch Qt Designer:
-```bash
-   pyqtforge createui mywindow
-```
-- 3 After designing, convert .ui to .py:
-```bash
-   pyqtforge ui2py ui/mywindow.ui
-```
-- 4 Edit your main.py to use the generated Python UI file:
-```bash
-   from PyQt5 import QtWidgets
-   from views.mywindow import Ui_MainWindow
-   
-   class clsMainWindow(QtWidgets.QMainWindow):
-       def __init__(self):
-           super(clsMainWindow , self).__init__()
-           self.ui = Ui_MainWindow()
-           self.ui.setupUi(self)
-   
-   app = QtWidgets.QApplication([])
-   window = MainWindow()
-   window.show()
-   app.exec_()
-```
-- 5 Run your project:
-```bash
-   pyqtforge runproject 
-```
+## 🔍 Vision
+### PyQtForge is inspired by the productivity of Django but tailored for desktop apps. The goal is to build:
+- 🔌 Database-aware PyQt projects
 
-## 🤝 Contribution
-We welcome contributions to PyQtForge!
-- 1 Fork this repository
-- 2 Create a feature branch (git checkout -b feature/yourfeature)
-- 3 Commit your changes (git commit -m 'Add new feature')
-- 4 Push to your branch (git push origin feature/yourfeature)
-- 5 Create a Pull Request
+- 📊 Model support with ORM-like patterns
 
+- ⚒️ Scalable command system (mkctrl, initdb, etc.)
 
-#### 💬 Feel free to suggest improvements, report issues, and discuss ideas in Issues tab!
+- 📦 Easy packaging with PyInstaller
 
-## 📄 License
-##### This project is licensed under the MIT License — free to use, modify, and distribute.
+- 🌍 Community-driven extensions and plugins
 
+## 🤝 Contributing
+We welcome all contributors! See CONTRIBUTING.md (coming soon) or open an issue/discussion to share ideas.
 
-#### 🌟 Star the repository if you find it helpful!
+## 📜 License
 
-## 🔥 Let's build faster, better PyQt apps together!
-```yaml
-
----
-
-✅ **This is the complete and clean `README.md`!**
-
----
-
-Would you also like me to generate a **`CONTRIBUTING.md`** file too (to guide contributors)? It would make your project even more professional! 🚀  
-Want it? 🌟  (Say: "yes")
-```
-
-
-
+MIT License — see LICENSE file.
