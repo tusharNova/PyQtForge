@@ -41,7 +41,7 @@ pyqtforge ui2py --all                 # Convert all .ui to .py
 pyqtforge mkctrl MainWindow          # Create controller for MainWindow.ui
 pyqtforge initdb                     # Set up config/ and models/ for ORM
 pyqtforge runproject MyApp           # Run your project
-pyqtforge mkmodel user               # create user model
+next command comming soon .................
 ```
 
 ## 🧠 Project Structure
