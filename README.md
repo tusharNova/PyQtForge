@@ -27,7 +27,6 @@ PyQtForge is a lightweight and powerful CLI framework designed to accelerate PyQ
 pip install pyqtforge
 git clone https://github.com/tusharNova/pyqtforge
 cd pyqtforge
-pip install -e .
 ```
 
 ## 🔧 CLI Usage
