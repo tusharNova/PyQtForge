@@ -1,6 +1,6 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.2
 Name: pyqtforge
-Version: 0.1.8
+Version: 0.1.9
 Summary: A CLI tool to scaffold and manage PyQt projects easily.
 Home-page: https://github.com/tusharNova/PyQtForge
 Author: Tushar Mankar
@@ -15,6 +15,14 @@ Requires-Dist: click
 Requires-Dist: uv
 Requires-Dist: pyqt5
 Requires-Dist: pyqt5-tools
+Dynamic: author
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
 
 
 # PyQtForge 🔥
@@ -45,7 +53,6 @@ PyQtForge is a lightweight and powerful CLI framework designed to accelerate PyQ
 pip install pyqtforge
 git clone https://github.com/tusharNova/pyqtforge
 cd pyqtforge
-pip install -e .
 ```
 
 ## 🔧 CLI Usage
@@ -59,7 +66,7 @@ pyqtforge ui2py --all                 # Convert all .ui to .py
 pyqtforge mkctrl MainWindow          # Create controller for MainWindow.ui
 pyqtforge initdb                     # Set up config/ and models/ for ORM
 pyqtforge runproject MyApp           # Run your project
-pyqtforge mkmodel user               # create user model
+next command comming soon .................
 ```
 
 ## 🧠 Project Structure

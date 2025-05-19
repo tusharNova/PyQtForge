@@ -2,7 +2,6 @@ LICENSE
 README.md
 setup.py
 pyqtforge/__init__.py
-pyqtforge/__main__.py
 pyqtforge/cli.py
 pyqtforge/controllergen.py
 pyqtforge/envmanager.py
